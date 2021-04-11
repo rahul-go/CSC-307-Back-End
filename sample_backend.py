@@ -72,7 +72,7 @@ def get_users():
         userToAdd = request.get_json()
         userToAdd['id'] = str(uuid4())
         users['users_list'].append(userToAdd)
-        resp = jsonify(success=True)
+        resp = jsonify(success=True, user=userToAdd)
         resp.status_code = 201
         return resp
     elif request.method == 'DELETE':
