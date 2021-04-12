@@ -86,11 +86,23 @@ def get_users():
         return resp
 
 
-@app.route('/users/<id>')
+@app.route('/users/<id>', methods=['GET', 'DELETE'])
 def get_user(id):
-    if id:
-        for user in users['users_list']:
-            if user['id'] == id:
-                return user
-        return ({})
-    return users
+    if request.method == 'GET':
+        if id:
+            for user in users['users_list']:
+                if user['id'] == id:
+                    return user
+            return ({})
+        return users
+    elif request.method == 'DELETE':
+        if id:
+            for user in users['users_list']:
+                if user['id'] == id:
+                    users['users_list'].remove(user)
+                    resp = jsonify(success=True)
+                    resp.status_code = 204
+                    return resp
+        resp = jsonify(success=False)
+        resp.status_code = 404
+        return resp
