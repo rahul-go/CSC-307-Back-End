@@ -8,9 +8,9 @@ app = Flask(__name__)
 CORS(app)
 
 users = {
-    'users_list' :
+    'users_list':
     [
-        { 
+        {
             'id': 'xyz789',
             'name' : 'Charlie',
             'job': 'Janitor',
@@ -24,7 +24,7 @@ users = {
             'id': 'ppp222',
             'name': 'Mac',
             'job': 'Professor',
-        }, 
+        },
         {
             'id': 'yat999',
             'name': 'Dee',
